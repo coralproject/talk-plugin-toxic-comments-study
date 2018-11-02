@@ -33,16 +33,12 @@ const submitCommentScoreFeedback = (
       context: {
         entries: [
           {
-            text: url,
+            text: JSON.stringify({
+              url,
+              reply_to_id_Coral_comment_id,
+              Coral_comment_id,
+            }),
           },
-          // {
-          //   text: reply_to_id_Coral_comment_id,
-          //   type: 'reply_to_id_Coral_comment_id',
-          // },
-          // {
-          //   text: Coral_comment_id,
-          //   type: 'Coral_comment_id',
-          // },
         ],
       },
       attributeScores: {
