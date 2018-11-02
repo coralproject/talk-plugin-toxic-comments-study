@@ -34,16 +34,15 @@ const submitCommentScoreFeedback = (
         entries: [
           {
             text: url,
-            type: 'url',
           },
-          {
-            text: reply_to_id_Coral_comment_id,
-            type: 'reply_to_id_Coral_comment_id',
-          },
-          {
-            text: Coral_comment_id,
-            type: 'Coral_comment_id',
-          },
+          // {
+          //   text: reply_to_id_Coral_comment_id,
+          //   type: 'reply_to_id_Coral_comment_id',
+          // },
+          // {
+          //   text: Coral_comment_id,
+          //   type: 'Coral_comment_id',
+          // },
         ],
       },
       attributeScores: {
@@ -53,7 +52,7 @@ const submitCommentScoreFeedback = (
           },
         },
       },
-      languages: 'EN',
+      languages: ['EN'],
       communityId: `Coral:${forum_id}`,
       clientToken,
     };
