@@ -32,9 +32,18 @@ const submitCommentScoreFeedback = (
       },
       context: {
         entries: [
-          { url },
-          { reply_to_id_Coral_comment_id },
-          { Coral_comment_id },
+          {
+            text: url,
+            type: 'url',
+          },
+          {
+            text: reply_to_id_Coral_comment_id,
+            type: 'reply_to_id_Coral_comment_id',
+          },
+          {
+            text: Coral_comment_id,
+            type: 'Coral_comment_id',
+          },
         ],
       },
       attributeScores: {
