@@ -22,6 +22,9 @@ const submitCommentScoreFeedback = (
   // Handle this operation in the next tick, so it does not affect the current
   // comment processing.
   process.nextTick(async () => {
+    // Construct a client token.
+    const clientToken = `comment:${Coral_comment_id}`;
+
     // Construct the study payload.
     const payload = {
       comment: {
@@ -43,12 +46,12 @@ const submitCommentScoreFeedback = (
       },
       languages: 'EN',
       communityId: `Coral:${forum_id}`,
-      clientToken: '',
+      clientToken,
     };
 
     try {
       // Send the feedback to perspective.
-      await fetch(
+      const res = await fetch(
         `https://commentanalyzer.googleapis.com/v1alpha1/comments:suggestscore?key=${
           process.env.TALK_PERSPECTIVE_API_KEY
         }`,
@@ -60,6 +63,17 @@ const submitCommentScoreFeedback = (
           body: JSON.stringify(payload, null, 2),
         }
       );
+
+      // Verify that we got the same clientToken back from the response.
+      const body = await res.json();
+      if (!body || body.clientToken !== clientToken) {
+        throw new Error(
+          `"${JSON.stringify(
+            body
+          )}" did not contain the clientToken we expected`
+        );
+      }
+
       debug(`sent ${status} feedback to perspective`);
     } catch (err) {
       console.error(`could not send ${status} feedback to perspective`, err);

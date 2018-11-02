@@ -10,7 +10,7 @@ Modify/create your plugins.json file to include the plugin:
 {
   "server": [
     // ...
-    {"@coralproject/talk-plugin-toxic-comments-study": "^0.0.1"},
+    {"@coralproject/talk-plugin-toxic-comments-study": "^0.0.2"},
     // ...
   ],
   "client": [
