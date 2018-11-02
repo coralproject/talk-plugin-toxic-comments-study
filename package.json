@@ -1,0 +1,8 @@
+{
+  "name": "@coralproject/talk-plugin-toxic-comments-study",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "The Coral Project <coralcore@mozillafoundation.org>",
+  "license": "Apache-2.0",
+  "private": false
+}
