@@ -49,7 +49,9 @@ const submitCommentScoreFeedback = (
     try {
       // Send the feedback to perspective.
       await fetch(
-        'https://commentanalyzer.googleapis.com/v1alpha1/comments:suggestscore',
+        `https://commentanalyzer.googleapis.com/v1alpha1/comments:suggestscore?key=${
+          process.env.TALK_PERSPECTIVE_API_KEY
+        }`,
         {
           method: 'POST',
           headers: {
