@@ -1,6 +1,13 @@
 const debug = require('debug')('talk:plugin:toxic-comments-study');
 const fetch = require('node-fetch');
 
+// Load the global Talk configuration, we want to grab some variables..
+const { ROOT_URL } = require('config');
+
+// Use the ROOT_URL to grab the domain to construct a communityID for the
+// feedback.
+const communityId = `Coral:${new URL(ROOT_URL).domain}`;
+
 const statusMap = {
   ACCEPTED: 'APPROVED',
   REJECTED: 'DELETED',
@@ -14,7 +21,6 @@ const submitCommentScoreFeedback = (
     body: comment, // Comment body.
   }, // Comment.
   {
-    id: forum_id, // Asset (article) ID.
     url, // Asset (article) URL.
   }, // Asset (article).
   status // Mapped from the `statusMap` above.
@@ -49,7 +55,7 @@ const submitCommentScoreFeedback = (
         },
       },
       languages: ['EN'],
-      communityId: `Coral:${forum_id}`,
+      communityId,
       clientToken,
     };
 
