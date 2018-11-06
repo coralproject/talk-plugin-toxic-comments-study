@@ -6,7 +6,7 @@ const { ROOT_URL } = require('config');
 
 // Use the ROOT_URL to grab the domain to construct a communityID for the
 // feedback.
-const communityId = `Coral:${new URL(ROOT_URL).domain}`;
+const communityId = `Coral:${ROOT_URL}`;
 
 const statusMap = {
   ACCEPTED: 'APPROVED',
